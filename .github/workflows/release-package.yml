@@ -8,6 +8,9 @@ jobs:
 
   release:
     runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python
@@ -38,9 +41,6 @@ jobs:
     - name: Generate Docs
       run: pdoc --html project_name/ --output-dir docs/ --template-dir docs/templates --force
     - name: Deploy Docs
-      permissions:
-        pages: write
-        id-token: write
       environment:
         name: github-pages
         url: "${{ steps.deployment.outputs.page_url }}/project_name"
