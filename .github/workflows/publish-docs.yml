@@ -33,7 +33,7 @@ jobs:
       pages: write
       id-token: write
     environment:
-      name: github-pages
+      name: documentation
       url: "${{ steps.deployment.outputs.page_url }}/project_name"
     steps:
       - id: deployment

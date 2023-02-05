@@ -6,7 +6,6 @@ on:
 
 jobs:
   build-and-deploy:
-    name: Build and publish Python 🐍 distributions 📦 to Test PyPI
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
