@@ -33,7 +33,7 @@ jobs:
     - name: Push changes
       uses: ad-m/github-push-action@v0.6.0
       with:
-        force_with_lease: true
+        branch: ${{ github.head_ref }}
     - name: Build artifact
       run: |
         python -m build --sdist --wheel --outdir dist/
