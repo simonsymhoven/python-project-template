@@ -3,8 +3,7 @@ on:
   push:
     branches: [ master ]
 
-permissions:
-  pull-requests: 'write'
+permissions: write-all
 
 jobs:
   draft_release:
