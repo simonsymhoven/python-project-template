@@ -7,9 +7,7 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write
-      repository-projects: write
+    permissions: write-all
     steps:
     - uses: actions/checkout@v3
       with:
