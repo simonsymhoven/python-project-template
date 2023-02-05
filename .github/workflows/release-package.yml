@@ -37,6 +37,7 @@ jobs:
         repository_url: https://test.pypi.org/legacy/
     - name: Generate Docs
       run: pdoc --html project_name/ --output-dir docs/ --template-dir docs/templates --force
+    - name: Store documentation artifacts
       uses: actions/upload-pages-artifact@v1
       with:
         path: docs/
