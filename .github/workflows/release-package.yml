@@ -34,6 +34,7 @@ jobs:
       uses: ad-m/github-push-action@v0.6.0
       with:
         branch: ${{ github.head_ref }}
+        github_token: ${{ secrets.GITHUB_TOKEN }}
     - name: Build artifact
       run: |
         python -m build --sdist --wheel --outdir dist/
