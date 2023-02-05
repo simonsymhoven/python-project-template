@@ -1,9 +1,13 @@
-name: Release Drafter
+name: Run Release Drafter
 on:
   push:
     branches: [ master ]
 
-permissions: write-all
+permissions:
+  releases: write
+  contents: write
+  pull-requests: write
+  id-token: write
 
 jobs:
   draft_release:

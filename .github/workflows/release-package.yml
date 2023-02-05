@@ -1,12 +1,12 @@
-name: Upload Python Package
+name: Publish Python 🐍 distributions 📦 to Test PyPI
 
 on:
   release:
     types: [created]
 
 jobs:
-
-  release:
+  build-and-deploy:
+    name: Build and publish Python 🐍 distributions 📦 to Test PyPI
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -35,22 +35,3 @@ jobs:
       with:
         password: ${{ secrets.TEST_PYPI_API_TOKEN }}
         repository_url: https://test.pypi.org/legacy/
-    - name: Generate Docs
-      run: pdoc --html project_name/ --output-dir docs/ --template-dir docs/templates --force
-    - name: Store documentation artifacts
-      uses: actions/upload-pages-artifact@v1
-      with:
-        path: docs/
-
-  doc:
-    needs: release
-    runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v1
