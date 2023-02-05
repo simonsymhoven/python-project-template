@@ -14,4 +14,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Get version
         run: |
-          echo "${{ steps.create_release.outputs.upload_url }}"
+          echo "${{ steps.create_release.outputs.tag_name }}"
