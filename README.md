@@ -10,6 +10,6 @@ pip install project_name
 
 ## Usage
 
-```py
-from a import b
+```txt
+project_name @ git+https://github.com/simonsymhoven/python-project-template.git@0.5.1rc5
 ```
