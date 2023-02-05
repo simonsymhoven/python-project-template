@@ -1,4 +1,4 @@
-name: Publish Python 🐍 distributions 📦 to Test PyPI
+name: Publish Python distributions to Test PyPI
 
 on:
   release:
@@ -25,20 +25,19 @@ jobs:
         echo '__version__ = "${{ github.event.release.tag_name }}"' > project_name/__init__.py
         git config --global user.name 'Simon Symhoven'
         git config --global user.email 'post@simon-symhoven.de'
-        git checkout master
         git add project_name/__init__.py
         git commit -m "Bump version to ${{ github.event.release.tag_name }}"
-        git push
-    - name: Build artifact 📦
+        git push origin HEAD:master
+    - name: Build artifact
       run: |
         python -m build --sdist --wheel --outdir dist/
-    - name: Publish distribution 📦 to PyPI
+    - name: Publish distribution to PyPI
       if: "github.event.release.prerelease"
       uses: pypa/gh-action-pypi-publish@release/v1
       with:
         password: ${{ secrets.TEST_PYPI_API_TOKEN }}
         repository_url: https://test.pypi.org/legacy/
-    - name: Publish distribution 📦 to Test-PyPI
+    - name: Publish distribution to Test-PyPI
       if: "!github.event.release.prerelease"
       uses: pypa/gh-action-pypi-publish@release/v1
       with:
