@@ -28,7 +28,11 @@ jobs:
         git config --local user.name "github-actions[bot]"
         git add project_name/__init__.py
         git commit -m "Bump version to ${{ github.event.release.tag_name }}"
-        git push origin HEAD:${{ github.head_ref }}
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ github.head_ref }}
     - name: Build artifact
       run: |
         python -m build --sdist --wheel --outdir dist/
